@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -33,11 +34,9 @@ public class MainActivity extends BaseActivity implements CreateTaskBottomSheetF
     @BindView(R.id.taskRecycler)
     RecyclerView taskRecycler;
     @BindView(R.id.addTask)
-    TextView addTask;
+    Button addTask;
     TaskAdapter taskAdapter;
     List<Task> tasks = new ArrayList<>();
-    @BindView(R.id.noDataImage)
-    ImageView noDataImage;
     @BindView(R.id.calendar)
     ImageView calendar;
 
@@ -51,7 +50,7 @@ public class MainActivity extends BaseActivity implements CreateTaskBottomSheetF
         ComponentName receiver = new ComponentName(this, AlarmBroadcastReceiver.class);
         PackageManager pm = getPackageManager();
         pm.setComponentEnabledSetting(receiver, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
-        Glide.with(getApplicationContext()).load(R.drawable.first_note).into(noDataImage);
+
 
         addTask.setOnClickListener(view -> {
             CreateTaskBottomSheetFragment createTaskBottomSheetFragment = new CreateTaskBottomSheetFragment();
@@ -89,7 +88,6 @@ public class MainActivity extends BaseActivity implements CreateTaskBottomSheetF
             @Override
             protected void onPostExecute(List<Task> tasks) {
                 super.onPostExecute(tasks);
-                noDataImage.setVisibility(tasks.isEmpty() ? View.VISIBLE : View.GONE);
                 setUpAdapter();
             }
         }

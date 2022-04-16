@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.BottomnavActivity">
+
+  <FrameLayout
+      android:id="@+id/FrameContainer"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="@color/cardview_shadow_start_color"
+      android:layout_above="@id/bottomnavigationview"
+      />
+
+  <com.google.android.material.bottomnavigation.BottomNavigationView
+      android:id="@+id/bottomnavigationview"
+      android:layout_width="match_parent"
+      android:layout_height="70dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      android:background="@drawable/rounded"
+      app:itemIconTint="@color/nav_color"
+      app:menu="@menu/bottom_nav_menu"
+      />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
